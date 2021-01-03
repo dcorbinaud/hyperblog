@@ -75,4 +75,3 @@
         Su nomesclatura es la siguiente:
             -> git reset codigo_del_commit --hard/--soft
 
-        
