@@ -41,11 +41,11 @@
         
         Entonces, supongamos que queremos volver al segundo commit, para esto se utiliza "git reset" el cual tiene dos formas:
             -> hard
-                -> vuelve todo al estado anterior, es el mas peligroso pero tambien el que mas se utiliza 
+                -> vuelve todo al estado anterior esto quiere decir que se borra todo, es el mas peligroso pero tambien el que mas se utiliza 
             -> soft
                 -> vuelve al estado anterior PERO todo lo que esta en staging se mantiene dicho de otra forma, todo lo que "agregamos" para hacer commit se mantiene (git add).
 
         Su nomesclatura es la siguiente:
             -> git reset codigo_del_commit --hard/--soft
 
-            
+        
