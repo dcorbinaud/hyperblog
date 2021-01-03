@@ -1,0 +1,3 @@
+ - git rm --cached --
+En git cuando queremos eliminar un archivo despues de agregarlo (git add) podemos utilizar "git rm --cached nombreArchivo" de esta forma el archivo seguira en nuestro disco pero no se agregara al commit.
+
