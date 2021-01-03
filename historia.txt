@@ -1,3 +1,11 @@
- - git rm --cached --
+- git rm --cached --
+
 En git cuando queremos eliminar un archivo despues de agregarlo (git add) podemos utilizar "git rm --cached nombreArchivo" de esta forma el archivo seguira en nuestro disco pero no se agregara al commit.
 
+- Configurar git -
+
+Para revisar la configuración de git se utiliza el comando "git config --list"
+Para modificar la configuración se tiliza "git config --global parametro_a_modificar 'valor'"
+    Ejemplo
+        -> git config --global user.name "Diego Corbinnaud"
+        -> git config --global user.email "diego.corbinaud@gmail.com"
