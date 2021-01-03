@@ -1,5 +1,9 @@
-- git rm --cached --
-    -> En git cuando queremos eliminar un archivo despues de agregarlo (git add) podemos utilizar "git rm --cached nombreArchivo" de esta forma el archivo seguira en nuestro disco pero no se agregara al commit.
+- git rm -
+    ->  Este comando nos ayuda a eliminar archivos de Git sin eliminar su historial del sistema de versiones. Esto quiere decir que si necesitamos recuperar el archivo solo debemos “viajar en el tiempo” y recuperar el último commit antes de borrar el archivo en cuestión.
+
+        Recuerda que git rm no puede usarse así nomás. Debemos usar uno de los flags para indicarle a Git cómo eliminar los archivos que ya no necesitamos en la última versión del proyecto:
+            -> git rm --cached: Elimina los archivos del área de Staging y del próximo commit pero los mantiene en nuestro disco duro.
+            -> git rm --force: Elimina los archivos de Git y del disco duro. Git siempre guarda todo, por lo que podemos acceder al registro de la existencia de los archivos, de modo que podremos recuperarlos si es necesario (pero debemos usar comandos más avanzados).
 
 - Configurar git -
     -> Para revisar la configuración de git se utiliza el comando "git config --list"
@@ -15,7 +19,28 @@
 
 
 - git log -
-    -> Nos muestra todos los commits realizados
+    ->  Nos muestra todos los commits realizados.
+        Ademas si se utiliza en conjunto con "--stat" se puede visualizar exactamente cuantos cambios se hicieron en cada archivo.
+            -> git log
+                
+                commit b81edceed2149b74e13f6dbe5773c6bb27cc4d0d (HEAD -> master)
+                Author: Diego Corbinaud <dcorbina@everis.com>
+                Date:   Sat Jan 2 22:58:58 2021 -0300
+
+                    arranco mi proyecto con html y css
+
+            -> git log -- stat
+
+                commit b81edceed2149b74e13f6dbe5773c6bb27cc4d0d (HEAD -> master)
+                Author: Diego Corbinaud <dcorbina@everis.com>
+                Date:   Sat Jan 2 22:58:58 2021 -0300
+
+                    arranco mi proyecto con html y css
+
+                blogpost.html   | 13 +++++++++++++
+                css/estilos.css |  6 ++++++
+                historia.txt    |  4 ++--
+                3 files changed, 21 insertions(+), 2 deletions(-)
 
 - git reset -
     -> Se utiliza para volver a una version anterior, se utiliza en conjunto con "git log" para conocer el tag del commit al que queremos volver, por ejemplo al realizar este comando nos aparecera lo siguiente
@@ -39,11 +64,13 @@
 
         Con esto podemos conocer el tag del commit, que es el texto con numeros y letras aleatorios "fbfd5017143ba2b04d352ab1ead9b2305c811887" (segundo commit).
         
-        Entonces, supongamos que queremos volver al segundo commit, para esto se utiliza "git reset" el cual tiene dos formas:
+        Entonces, supongamos que queremos volver al segundo commit, para esto se utiliza "git reset" seguido de otro parametro:
             -> hard
-                -> vuelve todo al estado anterior esto quiere decir que se borra todo, es el mas peligroso pero tambien el que mas se utiliza 
+                -> Borra todo. Todo todito, absolutamente todo. Toda la información de los commits y del área de staging se borra del historial.
             -> soft
-                -> vuelve al estado anterior PERO todo lo que esta en staging se mantiene dicho de otra forma, todo lo que "agregamos" para hacer commit se mantiene (git add).
+                -> Borramos todo el historial y los registros de Git pero guardamos los cambios que tengamos en Staging, así podemos aplicar las últimas actualizaciones a un nuevo commit.
+            -> HEAD
+                -> Este es el comando para sacar archivos del área de Staging. No para borrarlos ni nada de eso, solo para que los últimos cambios de estos archivos no se envíen al último commit, a menos que cambiemos de opinión y los incluyamos de nuevo en staging con "git add", por supuesto.
 
         Su nomesclatura es la siguiente:
             -> git reset codigo_del_commit --hard/--soft
