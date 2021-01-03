@@ -1,17 +1,51 @@
 - git rm --cached --
-
-En git cuando queremos eliminar un archivo despues de agregarlo (git add) podemos utilizar "git rm --cached nombreArchivo" de esta forma el archivo seguira en nuestro disco pero no se agregara al commit.
+    -> En git cuando queremos eliminar un archivo despues de agregarlo (git add) podemos utilizar "git rm --cached nombreArchivo" de esta forma el archivo seguira en nuestro disco pero no se agregara al commit.
 
 - Configurar git -
+    -> Para revisar la configuración de git se utiliza el comando "git config --list"
+    -> Para modificar la configuración se tiliza "git config --global parametro_a_modificar 'valor'"
+        Ejemplo
+            -> git config --global user.name "Diego Corbinnaud"
+            -> git config --global user.email "diego.corbinaud@gmail.com"
 
-Para revisar la configuración de git se utiliza el comando "git config --list"
-Para modificar la configuración se tiliza "git config --global parametro_a_modificar 'valor'"
-    Ejemplo
-        -> git config --global user.name "Diego Corbinnaud"
-        -> git config --global user.email "diego.corbinaud@gmail.com"
 
 - git show -
+    -> Este comando te muestra un historial de cambios realizados a un documento en espesifico o todo.
+        -> git show historia.txt
 
-Este comando te muestra un historial de cambios realizados a un documento en espesifico o todo.
-    -> git show historia.txt
 
+- git log -
+    -> Nos muestra todos los commits realizados
+
+- git reset -
+    -> Se utiliza para volver a una version anterior, se utiliza en conjunto con "git log" para conocer el tag del commit al que queremos volver, por ejemplo al realizar este comando nos aparecera lo siguiente
+                commit 7cad5a2b0f788bbfec42fe1647aa303a0776c953 (HEAD -> master)
+                Author: Diego Corbinaud <dcorbina@everis.com>
+                Date:   Sat Jan 2 22:23:28 2021 -0300
+
+                    Este es el tercer y ultimo commit
+
+                commit fbfd5017143ba2b04d352ab1ead9b2305c811887
+                Author: Diego Corbinaud <dcorbina@everis.com>
+                Date:   Sat Jan 2 22:12:58 2021 -0300
+
+                    Este es el segundo commit
+
+                commit 014f0fa175a54359ed45100900c9b71ff48a5935
+                Author: Diego Corbinaud <dcorbina@everis.com>
+                Date:   Sat Jan 2 22:06:13 2021 -0300
+
+                    Este es el primer commit
+
+        Con esto podemos conocer el tag del commit, que es el texto con numeros y letras aleatorios "fbfd5017143ba2b04d352ab1ead9b2305c811887" (segundo commit).
+        
+        Entonces, supongamos que queremos volver al segundo commit, para esto se utiliza "git reset" el cual tiene dos formas:
+            -> hard
+                -> vuelve todo al estado anterior, es el mas peligroso pero tambien el que mas se utiliza 
+            -> soft
+                -> vuelve al estado anterior PERO todo lo que esta en staging se mantiene dicho de otra forma, todo lo que "agregamos" para hacer commit se mantiene (git add).
+
+        Su nomesclatura es la siguiente:
+            -> git reset codigo_del_commit --hard/--soft
+
+            
